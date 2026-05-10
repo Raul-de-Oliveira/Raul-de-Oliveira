@@ -1,0 +1,93 @@
+const contacts = [
+  {
+    icon: 'bxl-github',
+    label: 'GitHub',
+    value: 'Raul-de-Oliveira',
+    href: 'https://github.com/Raul-de-Oliveira',
+  },
+  {
+    icon: 'bxl-linkedin',
+    label: 'LinkedIn',
+    value: 'raul-oliveira-b7077634b',
+    href: 'https://www.linkedin.com/in/raul-oliveira-b7077634b/',
+  },
+  {
+    icon: 'bx-envelope',
+    label: 'Email',
+    value: 'ra.oliveira.salto@gmail.com',
+    href: 'ra.oliveira.salto@gmail.com',
+  },
+]
+
+export default function Contact() {
+  return (
+    <section id="contato" style={{ padding: '96px 24px', position: 'relative' }}>
+      <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
+
+        <p style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--accent-1)', marginBottom: '8px' }}>
+          ✦ Vamos conversar
+        </p>
+
+        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
+          Entre em{' '}
+          <span style={{
+            background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}>
+            contato
+          </span>
+        </h2>
+
+        <div style={{ width: '40px', height: '2px', borderRadius: '2px', marginBottom: '24px', background: 'linear-gradient(90deg, var(--accent-1), var(--accent-2))' }} />
+
+        <p style={{ fontSize: '15px', marginBottom: '48px', color: 'var(--text-secondary)' }}>
+          Estou disponível para novas oportunidades. Me chama!
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          {contacts.map((contact) => (
+            <a key={contact.label}
+              href={contact.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                padding: '20px',
+                borderRadius: '12px',
+                border: '1px solid var(--border)',
+                background: 'var(--surface)',
+                textDecoration: 'none',
+                transition: 'transform 0.2s, border-color 0.2s',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-4px)'
+                e.currentTarget.style.borderColor = 'var(--accent-1)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.borderColor = 'var(--border)'
+              }}>
+
+              <i className={`bx ${contact.icon}`}
+                style={{ fontSize: '32px', color: 'var(--accent-1)' }} />
+
+              <div>
+                <p style={{ fontSize: '11px', color: 'var(--text-secondary)', marginBottom: '4px' }}>
+                  {contact.label}
+                </p>
+                <p style={{ fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>
+                  {contact.value}
+                </p>
+              </div>
+
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  )
+}

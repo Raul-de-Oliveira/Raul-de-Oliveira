@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --bg: #0d0d1a;
+  --surface: rgba(123, 95, 255, 0.05);
+  --border: rgba(123, 95, 255, 0.2);
+  --text-primary: #f0f0ff;
+  --text-secondary: #8888aa;
+  --accent-1: #7B5FFF;
+  --accent-2: #00C9FF;
+
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.light {
+  --bg: #f5f7f5;
+  --surface: rgba(0, 140, 70, 0.05);
+  --border: rgba(0, 140, 70, 0.2);
+  --text-primary: #0d1f0d;
+  --text-secondary: #4a6a4a;
+  --accent-1: #00a854;
+  --accent-2: #00d4a0;
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .pt-20 {
+    padding-top: 5rem;
+  }
+  .mb-10 {
+    margin-bottom: 2.5rem;
+  }
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  .mb-3 {
+    margin-bottom: 0.75rem;
+  }
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  .gap-12 {
+    gap: 3rem;
+  }
+  .gap-6 {
+    gap: 1.5rem;
+  }
+  .gap-4 {
+    gap: 1rem;
+  }
+}
+#__next-build-watcher,
+nextjs-portal {
+  display: none !important;
 }
