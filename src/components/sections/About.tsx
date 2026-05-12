@@ -29,7 +29,7 @@ export default function About() {
           <div>
             <p style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px', color: 'var(--text-secondary)' }}>
               Olá! Sou Raul, desenvolvedor Frontend focado em criar experiências web modernas, 
-              intuitivas e funcionais. Estou em constante evolução aprofundando e melhorando códigos em React a cada projeto.
+              intuitivas e funcionais. Estou em constante evolução, aprofundando e melhorando códigos em React a cada projeto.
             </p>
             <p style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px', color: 'var(--text-secondary)' }}>
               Tenho foco em escrever código limpo, acessível e performático,

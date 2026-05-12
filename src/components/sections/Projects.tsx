@@ -3,7 +3,7 @@ import Image from 'next/image'
 const projects = [
   {
     name: 'Pizzaria Online',
-    description: 'Sistema de pedidos online com carrinho interativo e cálculo de total em tempo real.',
+    description: 'Sistema de pedidos online com carrinho interativo e cálculo total em tempo real.',
     tech: ['HTML', 'CSS', 'JavaScript'],
     image: '/projeto-pizzaria.png',
     demo: 'https://raul-de-oliveira.github.io/projeto-pizzaria/',
@@ -11,7 +11,7 @@ const projects = [
   },
   {
     name: 'Landing Page',
-    description: 'Landing page com formulário de cadastro validado e menu hamburguer responsivo.',
+    description: 'Landing page com um formulario de cadastro valido.',
     tech: ['HTML', 'CSS', 'JavaScript'],
     image: '/projeto-landing.png',
     demo: 'https://raul-de-oliveira.github.io/landing-page/',
@@ -19,8 +19,8 @@ const projects = [
   },
   {
     name: 'Lista de Tarefas',
-    description: 'Checklist de trabalhos de casa com verificação de conclusão e feedback visual.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
+    description: 'lista de tarefas com botões de excluir e editar.',
+    tech: ['React', 'TypeScript', 'Tailwind CSS'],
     image: '/projeto-ToDoList.png',
     demo: 'https://projeto-to-do-list-react.vercel.app',
     repo: 'https://github.com/Raul-de-Oliveira/projeto-ToDoList-react.git',
