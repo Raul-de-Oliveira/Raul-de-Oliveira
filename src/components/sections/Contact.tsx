@@ -8,14 +8,14 @@ const contacts = [
   {
     icon: 'bxl-linkedin',
     label: 'LinkedIn',
-    value: 'raul-oliveira-b7077634b',
+    value: 'Raul Oliveira',
     href: 'https://www.linkedin.com/in/raul-oliveira-b7077634b/',
   },
   {
     icon: 'bx-envelope',
     label: 'Email',
     value: 'ra.oliveira.salto@gmail.com',
-    href: 'ra.oliveira.salto@gmail.com',
+    href: 'https://mail.google.com/mail/?view=cm&to=ra.oliveira.salto@gmail.com',
   },
 ]
 

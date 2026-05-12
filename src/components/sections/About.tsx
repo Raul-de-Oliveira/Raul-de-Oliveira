@@ -1,5 +1,5 @@
 
-
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -25,45 +25,38 @@ export default function About() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
 
+          {/* Texto */}
           <div>
             <p style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px', color: 'var(--text-secondary)' }}>
-              Olá! Sou o Raul, desenvolvedor Frontend apaixonado por criar
-              experiências web modernas e intuitivas. Estou em constante
-              evolução, aprofundando meus estudos em React e Next.js.
+              Olá! Sou Raul, desenvolvedor Frontend focado em criar experiências web modernas, 
+              intuitivas e funcionais. Estou em constante evolução aprofundando e melhorando códigos em React a cada projeto.
             </p>
             <p style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px', color: 'var(--text-secondary)' }}>
               Tenho foco em escrever código limpo, acessível e performático,
               sempre buscando as melhores práticas do mercado. Cada projeto
               é uma oportunidade de aprender algo novo.
             </p>
-            <p style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
-              Quando não estou codando, estou estudando novas tecnologias
-              para me tornar um desenvolvedor cada vez melhor.
-            </p>
+           
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-            {[
-              { icon: 'bx-code-alt', label: 'Foco', value: 'Frontend' },
-              { icon: 'bx-book-open', label: 'Estudando', value: 'React & Next.js' },
-              { icon: 'bx-git-branch', label: 'Controle', value: 'Git & GitHub' },
-              { icon: 'bx-rocket', label: 'Objetivo', value: 'Primeiro emprego' },
-            ].map((item) => (
-              <div key={item.label} style={{
-                padding: '20px',
-                borderRadius: '12px',
-                border: '1px solid var(--border)',
-                background: 'var(--surface)',
-              }}>
-                <i className={`bx ${item.icon}`} style={{ fontSize: '24px', color: 'var(--accent-1)', display: 'block', marginBottom: '8px' }} />
-                <p style={{ fontSize: '11px', color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                  {item.label}
-                </p>
-                <p style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-primary)' }}>
-                  {item.value}
-                </p>
-              </div>
-            ))}
+          {/* Foto */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{
+              position: 'relative',
+              width: '300px',
+              height: '300px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: '3px solid var(--accent-1)',
+              boxShadow: '0 0 40px rgba(123, 95, 255, 0.3)',
+            }}>
+              <Image
+                src="/foto-perfil.jpeg"
+                alt="Raul de Oliveira"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
           </div>
 
         </div>

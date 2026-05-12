@@ -10,14 +10,6 @@ const projects = [
     repo: 'https://github.com/Raul-de-Oliveira/projeto-pizzaria',
   },
   {
-    name: 'Lista de Tarefas',
-    description: 'Checklist de trabalhos de casa com verificação de conclusão e feedback visual.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    image: '/projeto-lista.png',
-    demo: 'https://raul-de-oliveira.github.io/projeto-lista-de-trabalhos-de-casa/',
-    repo: 'https://github.com/Raul-de-Oliveira/projeto-lista-de-trabalhos-de-casa',
-  },
-  {
     name: 'Landing Page',
     description: 'Landing page com formulário de cadastro validado e menu hamburguer responsivo.',
     tech: ['HTML', 'CSS', 'JavaScript'],
@@ -25,6 +17,15 @@ const projects = [
     demo: 'https://raul-de-oliveira.github.io/landing-page/',
     repo: 'https://github.com/Raul-de-Oliveira/landing-page',
   },
+  {
+    name: 'Lista de Tarefas',
+    description: 'Checklist de trabalhos de casa com verificação de conclusão e feedback visual.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    image: '/projeto-ToDoList.png',
+    demo: 'https://projeto-to-do-list-react.vercel.app',
+    repo: 'https://github.com/Raul-de-Oliveira/projeto-ToDoList-react.git',
+  },
+  
 ]
 
 export default function Projects() {
@@ -111,17 +112,19 @@ export default function Projects() {
                   <a href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
+                   
                     style={{
                       flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
                       padding: '8px', borderRadius: '8px', textDecoration: 'none',
                       color: 'white',
                       background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
                     }}>
-                    Ver Demo
+                    Projeto
                   </a>
                   <a href={project.repo}
                     target="_blank"
                     rel="noopener noreferrer"
+                     
                     style={{
                       flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
                       padding: '8px', borderRadius: '8px', textDecoration: 'none',
@@ -129,7 +132,7 @@ export default function Projects() {
                       color: 'var(--accent-1)',
                       background: 'transparent',
                     }}>
-                    GitHub
+                    Repositório
                   </a>
                 </div>
 
