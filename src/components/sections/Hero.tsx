@@ -14,18 +14,9 @@ export default function Hero({ theme }: HeroProps) {
       paddingTop: '80px',
     }}>
 
-      <div style={{
-        position: 'absolute', top: 0, left: 0,
-        width: '400px', height: '400px', borderRadius: '50%',
-        background: 'var(--accent-1)', filter: 'blur(120px)', opacity: 0.12,
-        pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: 0, right: 0,
-        width: '400px', height: '400px', borderRadius: '50%',
-        background: 'var(--accent-2)', filter: 'blur(120px)', opacity: 0.10,
-        pointerEvents: 'none',
-      }} />
+
+      <div className="hero__blur hero__blur--tl" />
+      <div className="hero__blur hero__blur--br" />
 
       <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px', width: '100%', position: 'relative', zIndex: 10 }}>
         
@@ -33,16 +24,24 @@ export default function Hero({ theme }: HeroProps) {
           ✦ Desenvolvedor Frontend
         </p>
 
-        <h1 style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(48px, 8vw, 80px)', fontWeight: 800, lineHeight: 1.05, marginBottom: '16px', color: 'var(--text-primary)' }}>
-          Raul de{' '}
-          <span style={{
-            background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}>
-            Oliveira.
-          </span>
-        </h1>
+
+      <h1 style={{
+         fontFamily: 'Syne, sans-serif',
+         fontSize: 'clamp(32px, 7vw, 80px)',
+           fontWeight: 800,
+  lineHeight: 1.05,
+  marginBottom: '16px',
+  whiteSpace: 'nowrap',
+}}>
+  <span style={{ color: 'var(--text-primary)' }}>Raul de </span>
+  <span style={{
+    background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  }}>
+    Oliveira.
+  </span>
+</h1>
 
         <p style={{ fontSize: '18px', marginBottom: '40px', color: 'var(--text-secondary)', fontWeight: 300 }}>
           Transformando ideias em interfaces modernas, funcionais e acessíveis.
