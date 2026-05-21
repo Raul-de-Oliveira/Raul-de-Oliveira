@@ -1,4 +1,16 @@
-const contacts = [
+'use client'
+
+import { useState, useEffect } from 'react'
+
+interface Contact {
+  icon: string
+  label: string
+  value: string
+  href: string | null
+  onClick?: () => void
+}
+
+const contacts: Contact[] = [
   {
     icon: 'bxl-github',
     label: 'GitHub',
@@ -8,18 +20,28 @@ const contacts = [
   {
     icon: 'bxl-linkedin',
     label: 'LinkedIn',
-    value: 'Raul Oliveira',
+    value: 'raul-oliveira-b7077634b',
     href: 'https://www.linkedin.com/in/raul-oliveira-b7077634b/',
   },
   {
     icon: 'bx-envelope',
     label: 'Email',
     value: 'ra.oliveira.salto@gmail.com',
-    href: 'https://mail.google.com/mail/?view=cm&to=ra.oliveira.salto@gmail.com',
+    href: null,
+    onClick: () => window.open('https://mail.google.com/mail/?view=cm&to=ra.oliveira.salto@gmail.com', '_blank'),
   },
 ]
 
 export default function Contact() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <section id="contato" style={{ padding: '96px 24px', position: 'relative' }}>
       <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
@@ -28,7 +50,7 @@ export default function Contact() {
           ✦ Vamos conversar
         </p>
 
-        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
+        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: isMobile ? '28px' : '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
           Entre em{' '}
           <span style={{
             background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
@@ -45,21 +67,22 @@ export default function Contact() {
           Estou disponível para novas oportunidades. Me chama!
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: '16px',
+        }}>
           {contacts.map((contact) => (
             <a key={contact.label}
-              href={contact.href}
+              href={contact.href ?? '#'}
+              onClick={contact.onClick ? (e) => { e.preventDefault(); contact.onClick!() } : undefined}
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '20px',
-                borderRadius: '12px',
-                border: '1px solid var(--border)',
-                background: 'var(--surface)',
-                textDecoration: 'none',
+                display: 'flex', alignItems: 'center', gap: '16px',
+                padding: '20px', borderRadius: '12px',
+                border: '1px solid var(--border)', background: 'var(--surface)',
+                textDecoration: 'none', cursor: 'pointer',
                 transition: 'transform 0.2s, border-color 0.2s',
               }}
               onMouseEnter={e => {

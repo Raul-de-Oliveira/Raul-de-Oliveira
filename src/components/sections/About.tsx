@@ -1,7 +1,18 @@
+'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 export default function About() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <section id="sobre" style={{ padding: '96px 24px', position: 'relative' }}>
       <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
@@ -23,28 +34,29 @@ export default function About() {
 
         <div style={{ width: '40px', height: '2px', borderRadius: '2px', marginBottom: '48px', background: 'linear-gradient(90deg, var(--accent-1), var(--accent-2))' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
+        <div style={{
+  display: 'grid',
+  gridTemplateColumns: window.innerWidth < 768 ? '1fr' : '1fr 1fr',
+  gap: '48px',
+  alignItems: 'center',
+}}>
 
           {/* Texto */}
           <div>
             <p style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px', color: 'var(--text-secondary)' }}>
-              Olá! Sou Raul, desenvolvedor Frontend focado em criar experiências web modernas, 
-              intuitivas e funcionais. Estou em constante evolução, aprofundando e melhorando códigos em React a cada projeto.
+              Olá! Sou Raul, desenvolvedor Frontend focado em criar experiências web modernas, intuitivas e funcionais. Estou em constante evolução, aprofundando e melhorando códigos em React a cada projeto.
             </p>
-            <p style={{ fontSize: '15px', lineHeight: 1.8, marginBottom: '16px', color: 'var(--text-secondary)' }}>
-              Tenho foco em escrever código limpo, acessível e performático,
-              sempre buscando as melhores práticas do mercado. Cada projeto
-              é uma oportunidade de aprender algo novo.
+            <p style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
+              Tenho foco em escrever código limpo, acessível e performático, sempre buscando as melhores práticas do mercado. Cada projeto é uma oportunidade de aprender algo novo.
             </p>
-           
           </div>
 
           {/* Foto */}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{
               position: 'relative',
-              width: '300px',
-              height: '300px',
+              width: isMobile ? '200px' : '280px',
+              height: isMobile ? '200px' : '280px',
               borderRadius: '50%',
               overflow: 'hidden',
               border: '3px solid var(--accent-1)',

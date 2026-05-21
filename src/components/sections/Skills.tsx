@@ -1,3 +1,7 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
 const skillGroups = [
   {
     title: 'Linguagens',
@@ -13,10 +17,19 @@ const skillGroups = [
     title: 'Ferramentas',
     items: ['HTML5', 'CSS3', 'Git', 'GitHub', 'Vercel'],
     variant: 'tool',
-  },
+  }
 ]
 
 export default function Skills() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <section id="skills" style={{ padding: '96px 24px', position: 'relative' }}>
       <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
@@ -25,7 +38,7 @@ export default function Skills() {
           ✦ O que eu sei
         </p>
 
-        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
+        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: isMobile ? '28px' : '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
           Skills &{' '}
           <span style={{
             background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
@@ -38,7 +51,11 @@ export default function Skills() {
 
         <div style={{ width: '40px', height: '2px', borderRadius: '2px', marginBottom: '48px', background: 'linear-gradient(90deg, var(--accent-1), var(--accent-2))' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+          gap: '24px',
+        }}>
           {skillGroups.map((group) => (
             <div key={group.title} style={{
               padding: '24px',
@@ -72,7 +89,6 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-
             </div>
           ))}
         </div>

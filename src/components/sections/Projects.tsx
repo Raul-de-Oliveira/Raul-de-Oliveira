@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const projects = [
@@ -11,7 +14,7 @@ const projects = [
   },
   {
     name: 'Landing Page',
-    description: 'Landing page com um formulario de cadastro valido.',
+    description: 'Landing page com formulário de cadastro validado e menu hamburguer responsivo.',
     tech: ['HTML', 'CSS', 'JavaScript'],
     image: '/projeto-landing.png',
     demo: 'https://raul-de-oliveira.github.io/landing-page/',
@@ -19,16 +22,24 @@ const projects = [
   },
   {
     name: 'Lista de Tarefas',
-    description: 'lista de tarefas com botões de excluir e editar.',
+    description: 'Lista de tarefas com botões de adicionar, editar e excluir, construída com React e useReducer.',
     tech: ['React', 'TypeScript', 'Tailwind CSS'],
     image: '/projeto-ToDoList.png',
     demo: 'https://projeto-to-do-list-react.vercel.app',
-    repo: 'https://github.com/Raul-de-Oliveira/projeto-ToDoList-react.git',
+    repo: 'https://github.com/Raul-de-Oliveira/projeto-ToDoList-react',
   },
-  
 ]
 
 export default function Projects() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <section id="projetos" style={{ padding: '96px 24px', position: 'relative' }}>
       <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
@@ -37,7 +48,7 @@ export default function Projects() {
           ✦ O que eu construí
         </p>
 
-        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
+        <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: isMobile ? '28px' : '40px', fontWeight: 800, marginBottom: '12px', color: 'var(--text-primary)' }}>
           Meus{' '}
           <span style={{
             background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
@@ -50,7 +61,11 @@ export default function Projects() {
 
         <div style={{ width: '40px', height: '2px', borderRadius: '2px', marginBottom: '48px', background: 'linear-gradient(90deg, var(--accent-1), var(--accent-2))' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: '24px',
+        }}>
           {projects.map((project) => (
             <div key={project.name} style={{
               borderRadius: '12px',
@@ -70,7 +85,6 @@ export default function Projects() {
                 e.currentTarget.style.borderColor = 'var(--border)'
               }}>
 
-              {/* Imagem */}
               <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
                 <Image
                   src={project.image}
@@ -81,7 +95,6 @@ export default function Projects() {
                 />
               </div>
 
-              {/* Corpo */}
               <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <h3 style={{ fontFamily: 'Syne, sans-serif', fontSize: '16px', fontWeight: 700, marginBottom: '8px', color: 'var(--text-primary)' }}>
                   {project.name}
@@ -91,15 +104,11 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                {/* Tecnologias */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
                   {project.tech.map((t) => (
                     <span key={t} style={{
-                      fontSize: '11px',
-                      padding: '4px 10px',
-                      borderRadius: '20px',
-                      border: '1px solid var(--border)',
-                      color: 'var(--accent-1)',
+                      fontSize: '11px', padding: '4px 10px', borderRadius: '20px',
+                      border: '1px solid var(--border)', color: 'var(--accent-1)',
                       background: 'var(--surface)',
                     }}>
                       {t}
@@ -107,35 +116,26 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Links */}
                 <div style={{ display: 'flex', gap: '10px' }}>
-                  <a href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                   
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer"
                     style={{
                       flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
                       padding: '8px', borderRadius: '8px', textDecoration: 'none',
                       color: 'white',
                       background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
                     }}>
-                    Projeto
+                    Ver Demo
                   </a>
-                  <a href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                     
+                  <a href={project.repo} target="_blank" rel="noopener noreferrer"
                     style={{
                       flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
                       padding: '8px', borderRadius: '8px', textDecoration: 'none',
-                      border: '1px solid var(--border)',
-                      color: 'var(--accent-1)',
+                      border: '1px solid var(--border)', color: 'var(--accent-1)',
                       background: 'transparent',
                     }}>
-                    Repositório
+                    GitHub
                   </a>
                 </div>
-
               </div>
             </div>
           ))}

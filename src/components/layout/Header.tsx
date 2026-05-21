@@ -37,15 +37,21 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
         alignItems: 'center', height: '64px',
       }}>
 
-        {/* Logo */}
-        <span style={{
-          fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '20px',
-          background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
-          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-          whiteSpace: 'nowrap',
-        }}>
-          Raul de Oliveira
-        </span>
+      {/* Logo */}
+<span style={{
+  fontFamily: 'Syne, sans-serif',
+  fontWeight: 800,
+  fontSize: isMobile ? '16px' : '20px',
+  whiteSpace: 'nowrap',
+}}>
+  <span style={{
+    background: 'linear-gradient(135deg, var(--accent-1), var(--accent-2))',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  }}>
+  Raul de  Oliveira
+  </span>
+</span>
 
         {/* Links — só no desktop */}
         {!isMobile && (
