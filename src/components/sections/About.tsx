@@ -34,9 +34,9 @@ export default function About() {
 
         <div style={{ width: '40px', height: '2px', borderRadius: '2px', marginBottom: '48px', background: 'linear-gradient(90deg, var(--accent-1), var(--accent-2))' }} />
 
-        <div style={{
+       <div style={{
   display: 'grid',
-  gridTemplateColumns: window.innerWidth < 768 ? '1fr' : '1fr 1fr',
+  gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
   gap: '48px',
   alignItems: 'center',
 }}>
