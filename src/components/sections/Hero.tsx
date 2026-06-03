@@ -13,7 +13,7 @@ export default function Hero({ theme }: HeroProps) {
   useEffect(() => {
     const check = () => {
       setIsMobile(window.innerWidth < 768)
-      setIsSmall(window.innerWidth <= 425)
+      setIsSmall(window.innerWidth <= 630)
     }
     check()
     window.addEventListener('resize', check)
@@ -52,7 +52,7 @@ export default function Hero({ theme }: HeroProps) {
 
         <h1 style={{
           fontFamily: 'Syne, sans-serif',
-          fontSize: isSmall ? 'clamp(36px, 10vw, 56px)' : 'clamp(48px, 7vw, 80px)',
+          fontSize: isSmall ? 'clamp(36px, 10vw, 56px)' : 'clamp(48px, 5vw, 80px)',
           fontWeight: 800,
           lineHeight: 1.05,
           marginBottom: '16px',
